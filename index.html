@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+
+    <h1>Proyecto primer corte Simulación Ing Sistemas Daniel Castro</h1>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+    <title>Trabajo 1 Simulacion</title>
+
+</head>
+    <body bgcolor=cyan>
+
+        <!-- Menú de navegación del sitio -->
+        <style type="text/css">
+            body {
+              color: purple;
+              background-color: #d8da3d }
+            </style>
+
+        <canvas id="graficas" width="5" height="5"></canvas>
+    
+    </body>
+
+     <script >
+
+var numero = parseInt(prompt("Ingresa la cantidad de veces que será lanzado el dado"));            
+var a = b = c = d = e = f = 0;
+var totalTiradas = 0;
+
+
+function tiradaDado(){
+  
+
+  var dado6caras = parseInt(6*Math.random()+1);
+  return dado6caras;
+}
+
+for(i=1;i<=numero;i++){
+  tirada = tiradaDado();
+  switch(tirada){
+      case 1:
+          a++;
+          break;
+      case 2:
+          b++;
+          break;
+      case 3:
+          c++;
+          break;
+      case 4:
+          d++;
+          break;
+      case 5:
+          e++;
+          break;
+      case 6:
+          f++;
+          break;
+  }
+}
+
+totalTiradas = a+b+c+d+e+f;
+
+document.write("Cara 1: " +  a + " veces<br>");
+document.write("Cara 2: " +  b + " veces<br>");
+document.write("Cara 3: " +  c + " veces<br>");
+document.write("Cara 4: " +  d + " veces<br>");
+document.write("Cara 5: " +  e + " veces<br>");
+document.write("Cara 6: " +  f + " veces<br>");
+document.write("<br>")
+document.write("Total de lanzamientos del dado: " + totalTiradas + "<br><br>");
+
+var fra = a/totalTiradas;
+var frb = b/totalTiradas;
+var frc = c/totalTiradas;
+var frd = d/totalTiradas;
+var fre = e/totalTiradas;
+var frf = f/totalTiradas;
+
+
+document.write("Fr de 1:" + " es: " + fra +"<br>");
+document.write("Fr de 2:" + " es: " + frb +"<br>");
+document.write("Fr de 3:" + " es: " + frc +"<br>");
+document.write("Fr de 4:" + " es: " + frd +"<br>");
+document.write("Fr de 5:" + " es: " + fre +"<br>");
+document.write("Fr de 6:" + " es: " + frf +"<br>");
+
+
+
+var ctx= document.getElementById("graficas").getContext("2d");
+        var myChart= new Chart(ctx,{
+            type:"bar",
+            data:{
+                labels:['Cara 1','Cara 2','Cara 3','Cara 4','Cara 5', 'Cara 6'],
+                datasets:[{
+                        label:'Grafico de distribución de Datos por cada cara:',
+                        data:[a,b,c, d, e, f],
+                        backgroundColor:[
+                            'rgb(66, 134, 244,0.5)',
+                            'rgb(74, 135, 72,0.5)',
+                            'rgb(229, 89, 50,0.5)',
+                            'rgb(156, 222, 33,0.5)',
+                            'rgb(188, 88, 42,0.5)',
+                            'rgb(184, 188, 42,0.5)'
+                        ]
+                }]
+            },
+            options:{
+                scales:{
+                    yAxes:[{
+                            ticks:{
+                                beginAtZero:true
+                            }
+                    }]
+                }
+            }
+        });
+
+
+
+      </script>
+
+  </head>
+
+
+
+</html>
